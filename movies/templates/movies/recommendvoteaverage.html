@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center">
+    <h3>Vote Average</h3>
+    <a class="text-dark" href="{% url 'movies:recommend' %}">◀ Back</a>
+  </div>
+  <hr>
+  <div class="form-inline justify-content-center">
+  {% for movie in movies %}
+    <div class="card" style="width: 18rem;">
+      <a href="{% url 'movies:detail' movie.pk %}"><img src="{{ movie.poster_path }}" class="card-img-top" alt="..."></a>
+      <div class="card-body" style="height: 18rem">
+        <h5 class="card-title">{{ movie.title }}</h5>
+        <p class="card-text">
+          vote_average: {{movie.vote_average}}
+          {% if movie.overview %}
+            <p>{{ movie.overview|truncatechars:60 }}</p>
+          {% else %}
+            <p>줄거리 없음</p>
+          {% endif %}
+        </p>
+        <a href="{% url 'movies:detail' movie.pk %}" class="btn btn-outline-dark">DETAIL</a>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+
+{% endblock %}

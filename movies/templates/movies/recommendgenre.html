@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center">
+    <h3>Recommend Genre</h3>
+    <a class="text-dark" href="{% url 'movies:recommend' %}">◀ Back</a>
+  </div>
+  <hr>
+  <select id="movie-genre">
+    <option value="">--Please choose an option--</option>
+    {% for genre in genres %}
+      <option value="{{ genre.id }}">{{ genre.name }}</option>
+    {% endfor %}
+  </select>
+
+  <ul class="myUl">
+
+  </ul>
+
+  <script>
+    const movieGenre = document.querySelector('#movie-genre')
+    // console.log(movieGenre)
+
+    //const myUl = document.createElement('ul')
+    const ul = document.querySelector('.myUl')
+
+    movieGenre.addEventListener('change', function (event) {
+      event.preventDefault()
+      // console.log(event)
+
+      const genreId = event.target.value
+      // console.log(genreId)
+
+      axios.get('/movies/recommendgenre/', {
+        params: {
+          'genreId': genreId,
+        }
+      })
+      .then( function (response) {
+        console.log(response)
+        const temp = response.data.text
+        // ul.append(temp)
+
+        ul.innerHTML = ''
+        //myUl.innerHTML = ''
+
+        temp.forEach(movie => {
+          // ul.append(movie.title)
+          const myLi = document.createElement('li')
+          myLi.innerText = movie.title
+          ul.append(myLi)
+          //myUl.append(myLi)
+        })
+      })
+    })
+  </script>
+{% endblock %}
