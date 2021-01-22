@@ -76,17 +76,15 @@ README
 
 ### 2-2. 전체 일정 (trello)
 
-![trello 일정](README.assets/trello 일정.PNG)
+![trello 일정](README.assets/trello 일정-1611330946974.PNG)
 
-![trello 일정2](README.assets/trello 일정2.PNG)
-
-
+![trello 일정2](README.assets/trello 일정2-1611330956411.PNG)
 
 
 
 ## 3. ERD 모델링
 
-![ERD 모델링](README.assets/ERD 모델링.png)
+![ERD 모델링](README.assets/ERD 모델링-1611330974238.png)
 
 
 
